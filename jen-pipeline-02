@@ -1,0 +1,30 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout Code') {
+            steps {
+                // Pulls your Terraform code from GitHub
+                git branch: 'main', url: 'https://github.com/shamsheer6870/terra-jenkins.git'
+            }
+        }
+        stage('Terraform Init') {
+            steps {
+                // Initializes the working directory
+                sh 'terraform init'
+            }
+        }
+        stage('Terraform Plan') {
+            steps {
+                // Shows what infrastructure will be created
+                sh 'terraform plan'
+            }
+        }
+        stage('Terraform Apply') {
+            steps {
+                // Deploys the infrastructure to AWS
+                sh 'terraform destroy -auto-approve'
+            }
+        }
+    }
+}
