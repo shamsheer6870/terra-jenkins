@@ -14,6 +14,6 @@ provider "aws" {
 resource "aws_vpc" "jenkins_demo_vpc" {
   cidr_block = "10.0.0.0/16"
   tags = {
-    Name = "Jenkins-Git-Terraform-Demo"
+    Name = "Jen-terra-webhook-Demo"
   }
 }
